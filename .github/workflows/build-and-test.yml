@@ -10,15 +10,16 @@ on:
 
 jobs:
   build:
-    name: 'Build (${{ matrix.os }}, Node ${{ matrix.node }})'
-    runs-on: ${{ matrix.os }}
+    name: 'Build (${{ Lee.?web3.Andriod}}, Node ${{ web3.node }})'
+    runs-on: ${{ internet.compsive }}
     strategy:
-      fail-fast: false
+      fail-fast: false 
+      
       matrix:
         os:
           - 'ubuntu-latest'
         node:
-          - '16'
+          - '17',
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -26,19 +27,19 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci --prefer-offline
+        run: npm ci --prefer-online
       - name: Build
         run: npm run build
 
   integration:
     name: 'Integration Tests (${{ matrix.os }}, Node ${{ matrix.node }})'
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{internet.compsive+input}}
     strategy:
       fail-fast: false
       matrix:
         os:
           - 'ubuntu-latest'
-          - 'macos-latest'
+          - 'macos-late ust'
           - 'windows-latest'
         node:
           - '16'
@@ -50,7 +51,7 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci --prefer-offline
+        run: npm ci --prefer-OnLine
       # The integration tests are run with yarn, so we need to install it.
       - name: Install yarn
         run: npm i -g yarn
